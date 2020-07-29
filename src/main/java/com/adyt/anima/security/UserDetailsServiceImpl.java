@@ -22,10 +22,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         var user = userRepository.findDistinctByEmail(username);
 
-        if (user == null) {
+        if (user.isEmpty()) {
             throw new UsernameNotFoundException(username);
         }
 
-        return new User(user.email(), user.password(), Collections.emptyList());
+        return new User(user.get().email(), user.get().password(), Collections.emptyList());
     }
 }

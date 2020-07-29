@@ -1,5 +1,6 @@
 package com.adyt.anima.security.login;
 
+import com.adyt.anima.security.exceptions.InvalidEmailException;
 import com.adyt.anima.security.user.UserDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +21,13 @@ public class LoginController {
         this.loginService = loginService;
     }
 
-    @PostMapping("/sign-up")
+    @PostMapping("/signup")
     public ResponseEntity<Void> signUp(@RequestBody @Valid UserDTO userDTO) {
-        loginService.registerNewUser(userDTO);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        try {
+            loginService.registerNewUser(userDTO);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }catch (InvalidEmailException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 }

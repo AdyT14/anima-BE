@@ -17,7 +17,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
 
-    private final static String SIGN_UP_URL = "/users/sign-up";
+    private final static String SIGN_UP_URL = "/users/signup";
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserDetailsServiceImpl userDetailsService;
     private final SecurityConfiguration securityConfiguration;
