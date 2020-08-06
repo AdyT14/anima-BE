@@ -26,7 +26,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     public static final String HEADER_STRING = "Authorization";
     public static final String TOKEN_PREFIX = "Bearer ";
-    private static final Long EXPIRATION_TIME = 300000L;
+    private static final Long EXPIRATION_TIME = 300000L * 60;
     private final AuthenticationManager authenticationManager;
     private final SecurityConfiguration securityConfiguration;
 
